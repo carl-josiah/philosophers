@@ -1,0 +1,95 @@
+Core Questions to Research for Philosophers Understanding
+The Fundamental Problem
+1. What is the Dining Philosophers Problem?
+Who invented this problem and why?
+What real-world scenario does it represent?
+Why is this considered a "classic" computer science problem?
+2. What are the core components?
+How many philosophers are there traditionally?
+What do the forks represent?
+What are the three states a philosopher can be in?
+Why can't two philosophers use the same fork simultaneously?
+The Deadlock Scenario
+3. What is deadlock and why does it happen here?
+What happens if all philosophers pick up their left fork at the same time?
+Why can't the situation resolve itself naturally?
+How is this similar to real computer systems?
+4. What is the "starvation" problem?
+Can a philosopher wait forever to eat?
+What causes some philosophers to never get both forks?
+How does this relate to resource allocation in operating systems?
+Threading and Concurrency
+5. Why do we need threads for this problem?
+What does each thread represent?
+Why can't we solve this with a simple loop?
+How do threads allow simultaneous actions?
+6. What are mutexes and why are they necessary?
+What happens without mutexes when threads access shared resources?
+What is a "race condition"?
+How do mutexes prevent conflicts?
+Timing and Death
+7. What determines when a philosopher dies?
+How is "time since last meal" calculated?
+Why must death be detected quickly (within 10ms)?
+What happens to the simulation when someone dies?
+8. How does timing work in concurrent programs?
+Why can't we just use simple delays?
+How do you measure time precisely in multithreaded programs?
+Why might timing behave differently than expected?
+Synchronization Challenges
+9. How do you prevent all philosophers from acting simultaneously?
+What strategies exist to break symmetry?
+Why might numbering philosophers help?
+How do you ensure fairness?
+10. How do threads communicate safely?
+How does one thread tell others about important events (like death)?
+What happens if multiple threads try to print at the same time?
+How do you coordinate a clean shutdown?
+Implementation Specifics
+11. What does the program actually need to do?
+What should the output look like?
+When should the simulation end?
+What constitutes success vs failure?
+12. What are the edge cases?
+What happens with only 1 philosopher?
+What if death time is very short?
+What if eating takes longer than death time?
+Resource Management
+13. How do you clean up properly?
+What resources need to be freed?
+How do you ensure all threads stop safely?
+What happens if cleanup is interrupted?
+14. How do you handle errors gracefully?
+What if thread creation fails?
+What if mutex operations fail?
+How do you avoid resource leaks during errors?
+Research Strategy
+Start with these searches:
+"dining philosophers problem explained"
+"deadlock in operating systems"
+"pthread tutorial basics"
+"mutex synchronization example"
+"thread-safe programming concepts"
+Understanding benchmarks:
+Can you explain the problem to someone who's never heard of it?
+Can you predict what would happen in various scenarios?
+Can you identify why certain solutions won't work?
+Do you understand why threading makes this challenging?
+Stop researching when:
+You understand what causes deadlock and how to prevent it
+You know what mutexes do and why they're needed
+You can explain why timing is critical
+You understand the difference between threads and processes
+You know what the program output should look like
+Key Insight Questions
+15. Why is this problem important in computer science?
+How does this relate to database systems?
+How does this relate to operating system design?
+What modern systems face similar challenges?
+16. What makes a good solution?
+What qualities should the solution have?
+How do you measure if it's working correctly?
+What trade-offs exist between different approaches?
+Focus your research on understanding the PROBLEM first, then the CHALLENGES, then the basic TOOLS (threads, mutexes) needed to solve it.
+
+Don't dive deep into implementation details yet - just build a solid conceptual foundation.

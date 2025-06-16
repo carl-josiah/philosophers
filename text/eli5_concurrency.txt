@@ -1,0 +1,9 @@
+Computer processing is like cooking.
+
+In the past, computers operated like household kitchens with a single cook. It was straightforward to list out all the tasks needed for that person to make food: prepare ingredients, cook them, plate them, and wash dishes. Computer companies focused on making the cook work faster and faster until they got to a point where the cook reached physical limits and ended up overheating.
+
+So computer companies changed tactics and added more cooks to the kitchen (multicore). This should have sped things up but assigning work to properly utilize them got more difficult. You can have them all chop up ingredients but if you only have one stove, you're stuck waiting for dishes to cook one at a time (bottlenecked). Or you can have some cooks wait for plating but forget to prepare one ingredient so the cooks never end up doing anything (deadlocked).
+
+Concurrency is a way to properly assign tasks to the cooks so that they can produce the most amount of dishes without being deadlocked or bottlenecked.
+
+https://www.reddit.com/r/explainlikeimfive/comments/b3dpuq/eli5_programming_concurrency/
