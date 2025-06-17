@@ -7,6 +7,9 @@ CFLAGS		= -Wall -Wextra -Werror
 THREAD		= -pthread
 
 SRCS		= srcs/philo.c \
+			srcs/utils1.c \
+			srcs/parsing.c \
+			srcs/utils2.c
 
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 

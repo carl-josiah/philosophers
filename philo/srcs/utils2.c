@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 15:22:37 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/17 16:20:06 by ccastro          ###   ########.fr       */
+/*   Created: 2025/06/17 15:40:13 by ccastro           #+#    #+#             */
+/*   Updated: 2025/06/17 16:09:28 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-static int	is_correct_input(int ac, char *av[])
+int	is_delim(char c)
 {
-	if (!is_valid_argc(ac) || !is_valid_argv(ac, av))
-		return (0);
-	return (1);
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
 }
 
-int	main(int ac, char *av[])
+int	is_sign(char c)
 {
-	if (!is_correct_input(ac, av))
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	if (c == '-' || c == '+')
+		return (1);
+	return (0);
+}
+
+int	is_digit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
