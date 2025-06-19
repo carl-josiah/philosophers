@@ -10,6 +10,12 @@ Implementation starts ONLY when you've mastered concepts inside out, back and fo
 
 === DAY 1: CORE PROBLEM UNDERSTANDING (4-6 hours) ===
 
+STEP 0: UNDERSTAND THE PROBLEM
+1. What is the problem?
+2. What is the purpose and why does this problem exist?
+3. What is the goal of this project?
+4. How do we solve this problem?
+
 STEP 1: VISUALIZE THE PROBLEM (1 hour)
 CONCRETE TASK: Draw on paper
 1. Draw 5 circles (philosophers) around a table
