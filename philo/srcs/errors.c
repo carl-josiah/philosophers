@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 15:22:37 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/18 14:56:38 by ccastro          ###   ########.fr       */
+/*   Created: 2025/06/18 14:54:29 by ccastro           #+#    #+#             */
+/*   Updated: 2025/06/19 14:09:32 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-static int	is_correct_input(int ac, char *av[])
+void	error_message(const char *msg)
 {
-	if (!is_valid_argc(ac) || !is_valid_argv(ac, av))
-		return (0);
-	return (1);
-}
-
-int	main(int ac, char *av[])
-{
-	if (!is_correct_input(ac, av))
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	printf(RED "ERROR: %s\n" DEFAULT, msg);
+	printf("Usage: ./philo ");
+	printf("[philosopher_count] [time_to_die] [time_to_eat] [time_to_sleep] ");
+	printf(GREY "optional: [req_meal_count]\n");
 }

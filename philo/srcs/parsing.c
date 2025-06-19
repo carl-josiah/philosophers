@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:16:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/17 18:02:49 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/19 13:46:18 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	is_all_digit(int ac, char *av[])
 		has_digit = 0;
 		while (av[i][j] && is_delim(av[i][j]))
 			j++;
-		if (av[i][j] == '+')
+		if (av[i][j] == '+' || av[i][j] == '-')
 			j++;
 		while (av[i][j] && is_digit(av[i][j]))
 		{
@@ -72,9 +72,9 @@ static int	is_valid_num(int ac, char *av[])
 	i = 1;
 	while (i < ac)
 	{
-		if (!philo_atoi_safe(av[i], &num))
-			return (0);
-		if (num <= 0)
+		if (philo_atoi_safe(av[i], &num) == -1)
+			return (-1);
+		if (philo_atoi_safe(av[i], &num) == 0)
 			return (0);
 		i++;
 	}
@@ -85,14 +85,31 @@ int	is_valid_argc(int ac)
 {
 	if (ac == 5 || ac == 6)
 		return (1);
+	error_message("MUST BE 5 OR 6 ARGUMENTS");
 	return (0);
 }
 
 int	is_valid_argv(int ac, char *av[])
 {
-	if (is_empty_arg(ac, av) || !is_all_digit(ac, av))
+	if (is_empty_arg(ac, av))
+	{
+		error_message("MUST NOT HAVE EMPTY ARGUMENTS");
 		return (0);
-	if (!is_valid_num(ac, av))
+	}
+	if (!is_all_digit(ac, av))
+	{
+		error_message("MUST BE A NUMBER (E.G. \"+42\")");
 		return (0);
+	}
+	if (is_valid_num(ac, av) == 0)
+	{
+		error_message("MUST NOT BE GREATER THAN INT_MAX");
+		return (0);
+	}
+	if (is_valid_num(ac, av) == -1)
+	{
+		error_message("MUST NOT BE LESS THAN ZERO");
+		return (0);
+	}
 	return (1);
 }
