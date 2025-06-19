@@ -1,0 +1,20 @@
+Short Summary:
+
+The Abstract Problem:
+"We made computers faster but accidentally made them potentially slower due to coordination"
+
+The Concrete Philosophers Problem:
+The Setup:
+5 philosophers around a table
+5 forks (one between each philosopher)
+Each philosopher needs 2 forks to eat
+
+
+The Connection:
+
+More philosophers = More potential for eating (like more CPU cores = more potential speed)
+Poor coordination = Deadlock (everyone grabs left fork, nobody can eat = system freezes)
+Good coordination = Everyone eats efficiently (like proper threading = faster performance)
+The Insight: Adding more philosophers (cores) should make things faster, but without coordination rules, everyone gets stuck and nothing happens - making it infinitely slower than having just 1 philosopher.
+
+Bottom Line: The philosophers problem is a concrete way to visualize why multi-core computers can be slower than single-core without proper coordination.
