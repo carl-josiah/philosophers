@@ -10,7 +10,7 @@ SRCS		= srcs/philo.c \
 			srcs/utils1.c \
 			srcs/parsing.c \
 			srcs/utils2.c \
-			srcs/errors.c \
+			srcs/error.c \
 
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 
