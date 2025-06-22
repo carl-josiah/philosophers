@@ -20,10 +20,43 @@ void	*philo_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	while (1)
-	{
-		printf("Philo %d is thinking\n", philo->id);
-		sleep(1);
-	}
+    {
+        // Thinking
+        printf("Philo %d is thinking\n", philo->id);
+        sleep(1);
+        
+        // Try to grab forks
+        printf("Philo %d is trying to grab forks\n", philo->id);
+        
+        // Prevent deadlock by having odd philosophers grab right fork first
+        if (philo->id % 2 == 0)
+        {
+            pthread_mutex_lock(philo->left_f);
+            printf("Philo %d grabbed left fork\n", philo->id);
+            pthread_mutex_lock(philo->right_f);
+            printf("Philo %d grabbed right fork\n", philo->id);
+        }
+        else
+        {
+            pthread_mutex_lock(philo->right_f);
+            printf("Philo %d grabbed right fork\n", philo->id);
+            pthread_mutex_lock(philo->left_f);
+            printf("Philo %d grabbed left fork\n", philo->id);
+        }
+        
+        // Eating
+        printf("Philo %d is eating\n", philo->id);
+        sleep(2);
+        
+        // Put down forks
+        pthread_mutex_unlock(philo->left_f);
+        pthread_mutex_unlock(philo->right_f);
+        printf("Philo %d put down forks\n", philo->id);
+        
+        // Sleeping
+        printf("Philo %d is sleeping\n", philo->id);
+        sleep(1);
+    }
 	return (NULL);
 }
 
