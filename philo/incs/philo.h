@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/19 13:52:54 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/23 14:02:19 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,18 @@ typedef struct s_info
 	int	time_to_sleep;
 	int	req_meal_count;
 }		t_info;
+
+typedef struct s_philo
+{
+	int				id;
+	int				time;
+	int				state;
+	pthread_t		thread;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*first_fork;
+	pthread_mutex_t	*second_fork;
+}					t_philo;
 
 int		is_valid_argc(int ac);
 int		is_valid_argv(int ac, char *av[]);
