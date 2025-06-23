@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/23 14:02:19 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/23 10:20:54 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 
 typedef struct s_info
 {
-	int	num_of_philo;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	req_meal_count;
+	int	philo_count;
+	int	death_time;
+	int	eat_time;
+	int	sleep_time;
+	int	required_meal;
 }		t_info;
 
 typedef struct s_philo
@@ -37,12 +37,23 @@ typedef struct s_philo
 	int				id;
 	int				time;
 	int				state;
+	int				meal_count;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*first_fork;
 	pthread_mutex_t	*second_fork;
 }					t_philo;
+
+typedef struct s_sim
+{
+	t_info				*args;
+	t_philo				*philo;
+	pthread_mutex_t		*fork;
+	pthread_mutex_t		print_mutex;
+	int					state;
+	unsigned long long	start_time;
+}						t_sim;
 
 int		is_valid_argc(int ac);
 int		is_valid_argv(int ac, char *av[]);
