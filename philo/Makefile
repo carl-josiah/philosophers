@@ -11,6 +11,7 @@ SRCS		= srcs/philo.c \
 			srcs/parsing.c \
 			srcs/utils2.c \
 			srcs/error.c \
+			srcs/init.c \
 
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 

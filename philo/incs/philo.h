@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/23 10:20:54 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/23 16:24:12 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_info
 	int	death_time;
 	int	eat_time;
 	int	sleep_time;
-	int	required_meal;
+	int	meal_limit;
 }		t_info;
 
 typedef struct s_philo
@@ -47,7 +47,7 @@ typedef struct s_philo
 
 typedef struct s_sim
 {
-	t_info				*args;
+	t_info				*arg_data;
 	t_philo				*philo;
 	pthread_mutex_t		*fork;
 	pthread_mutex_t		print_mutex;
@@ -65,5 +65,9 @@ int		is_sign(char c);
 int		is_digit(char c);
 
 void	error_message(const char *msg);
+
+void	init_data(int ac, char **av, t_info *data);
+int		init_fork(t_info *arg, pthread_mutex_t **fork);
+int		allocate_memory(t_info *arg, t_philo **philo, pthread_mutex_t **fork);
 
 #endif
