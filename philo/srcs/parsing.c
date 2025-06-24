@@ -6,13 +6,13 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:16:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/23 13:40:06 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/24 09:25:47 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-static int	is_empty_arg(int ac, char *av[])
+static int	is_empty_arg(int ac, char **av)
 {
 	int		i;
 	size_t	j;
@@ -35,7 +35,7 @@ static int	is_empty_arg(int ac, char *av[])
 	return (0);
 }
 
-static int	is_all_digit(int ac, char *av[])
+static int	is_all_digit(int ac, char **av)
 {
 	int		i;
 	int		has_digit;
@@ -64,7 +64,7 @@ static int	is_all_digit(int ac, char *av[])
 	return (1);
 }
 
-static int	is_valid_num(int ac, char *av[])
+static int	is_valid_num(int ac, char **av)
 {
 	int		i;
 	int		num;
@@ -89,7 +89,7 @@ int	is_valid_argc(int ac)
 	return (0);
 }
 
-int	is_valid_argv(int ac, char *av[])
+int	is_valid_argv(int ac, char **av)
 {
 	if (is_empty_arg(ac, av))
 	{

@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/23 16:24:12 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/24 09:25:47 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_philo
 
 typedef struct s_sim
 {
-	t_info				*arg_data;
+	t_info				*arg;
 	t_philo				*philo;
 	pthread_mutex_t		*fork;
 	pthread_mutex_t		print_mutex;
@@ -56,7 +56,7 @@ typedef struct s_sim
 }						t_sim;
 
 int		is_valid_argc(int ac);
-int		is_valid_argv(int ac, char *av[]);
+int		is_valid_argv(int ac, char **av);
 
 int		philo_atoi_safe(char *str, int *out);
 
@@ -67,7 +67,7 @@ int		is_digit(char c);
 void	error_message(const char *msg);
 
 void	init_data(int ac, char **av, t_info *data);
-int		init_fork(t_info *arg, pthread_mutex_t **fork);
-int		allocate_memory(t_info *arg, t_philo **philo, pthread_mutex_t **fork);
+int		init_fork(t_sim *init);
+int		allocate_memory(t_sim *init);
 
 #endif
