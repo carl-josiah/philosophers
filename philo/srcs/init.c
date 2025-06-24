@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 15:08:34 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 09:33:28 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/24 10:26:12 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@ void	init_data(int ac, char **av, t_info *data)
 		data->meal_limit = 0;
 }
 
-int	allocate_memory(t_sim *init)
+int	malloc_philos_and_forks(t_sim *info)
 {
-	init->philo = malloc(sizeof(t_philo) * init->arg->philo_count);
-	if (!init->philo)
+	info->philos = malloc(sizeof(t_philo) * info->args->philo_count);
+	if (!info->philos)
 		return (0);
-	init->fork = malloc(sizeof(pthread_mutex_t) * init->arg->philo_count);
-	if (!init->fork)
+	info->forks = malloc(sizeof(pthread_mutex_t) * info->args->philo_count);
+	if (!info->forks)
 		return (0);
 	return (1);
 }
 
-int	init_fork(t_sim *init)
+int	init_forks(t_sim *info)
 {
 	int	i;
 
 	i = 0;
-	while (i < init->arg->philo_count)
+	while (i < info->args->philo_count)
 	{
-		if (pthread_mutex_init(&(init->fork)[i], NULL))
+		if (pthread_mutex_init(&(info->forks)[i], NULL))
 			return (0);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:37 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 09:28:47 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/24 10:26:55 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@ static int	is_correct_input(int ac, char **av)
 	return (1);
 }
 
-int	init_philo(int ac, char **av, t_sim *init)
+int	init_simul(int ac, char **av, t_sim *info)
 {
-	init_data(ac, av, init->arg);
-	if (!allocate_memory(init))
+	init_data(ac, av, info->args);
+	if (!malloc_philos_and_forks(info))
 		return (0);
-	if (!init_fork(init))
+	if (!init_forks(info))
 		return (0);
-	return (1);	
+	return (1);
 }
 
 int	main(int ac, char **av)
 {
 	t_info	arg;
-	t_sim	init;
+	t_sim	info;
 
-	init.arg = &arg;
+	info.args = &arg;
 	if (!is_correct_input(ac, av))
 		return (EXIT_FAILURE);
-	if (!init_philo(ac, av, &init))
+	if (!init_simul(ac, av, &info))
 		return (EXIT_FAILURE);
-	return (free(init.philo), free(init.fork), EXIT_SUCCESS);
+	return (free(info.philos), free(info.forks), EXIT_SUCCESS);
 }

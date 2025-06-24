@@ -12,6 +12,7 @@ SRCS		= srcs/philo.c \
 			srcs/utils2.c \
 			srcs/error.c \
 			srcs/init.c \
+			srcs/execution.c \
 
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 
