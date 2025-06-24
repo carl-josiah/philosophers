@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:18:30 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 11:45:47 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/24 16:30:01 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,17 @@ static void	init_philos_status(t_sim *info)
 static void	init_philos_id(t_sim *info)
 {
 	int	i;
+	int	j;
 	int	philos;
 
 	i = 0;
+	j = 1;
 	philos = info->args->philo_count;
 	while (i < philos)
 	{
-		info->philos[i].id = i;
+		info->philos[i].id = j;
 		i++;
+		j++;
 	}
 }
 

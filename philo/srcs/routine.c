@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 15:22:37 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 16:30:25 by ccastro          ###   ########.fr       */
+/*   Created: 2025/06/24 14:14:28 by ccastro           #+#    #+#             */
+/*   Updated: 2025/06/24 16:47:36 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-static int	is_correct_input(int ac, char **av)
+void	*routine(void *arg)
 {
-	if (!is_valid_argc(ac) || !is_valid_argv(ac, av))
-		return (0);
-	return (1);
-}
+	t_philo	*philo;
 
-int	main(int ac, char **av)
-{
-	t_arg	args;
-	t_sim	info;
-
-	info.args = &args;
-	if (!is_correct_input(ac, av))
-		return (EXIT_FAILURE);
-	if (!init_simul(ac, av, &info))
-		return (EXIT_FAILURE);
-	return (free(info.philos), free(info.forks), EXIT_SUCCESS);
+	philo = (t_philo *)arg;
+	while (1)
+	{
+		if (philo->state == 0)
+			philo_death(philo);
+		philo_take_fork(philo);
+		philo_eating(philo);
+		philo_sleeping(philo);
+		philo_thinking(philo);
+	}
+	return (NULL);
 }

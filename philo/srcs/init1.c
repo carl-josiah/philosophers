@@ -6,13 +6,13 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 15:08:34 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 11:35:17 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/24 16:36:22 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-static void	init_data(int ac, char **av, t_info *data)
+static void	init_data(int ac, char **av, t_arg *data)
 {
 	philo_atoi_safe(av[1], &data->philo_count);
 	philo_atoi_safe(av[2], &data->death_time);
@@ -56,6 +56,8 @@ int	init_simul(int ac, char **av, t_sim *info)
 		return (0);
 	if (!init_forks(info))
 		return (0);
-	init_philo(info);
+	init_philos(info);
+	info->state = 1;
+	info->start_time = get_timestamp_ms();
 	return (1);
 }

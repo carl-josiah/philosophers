@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   timing.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 15:22:37 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 16:30:25 by ccastro          ###   ########.fr       */
+/*   Created: 2025/06/24 13:36:08 by ccastro           #+#    #+#             */
+/*   Updated: 2025/06/24 13:47:05 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-static int	is_correct_input(int ac, char **av)
+long	get_timestamp_ms(void)
 {
-	if (!is_valid_argc(ac) || !is_valid_argv(ac, av))
-		return (0);
-	return (1);
-}
+	struct timeval	val;
 
-int	main(int ac, char **av)
-{
-	t_arg	args;
-	t_sim	info;
-
-	info.args = &args;
-	if (!is_correct_input(ac, av))
-		return (EXIT_FAILURE);
-	if (!init_simul(ac, av, &info))
-		return (EXIT_FAILURE);
-	return (free(info.philos), free(info.forks), EXIT_SUCCESS);
+	gettimeofday(&val, NULL);
+	return (val.tv_sec * 1000 + val.tv_usec / 1000);
 }

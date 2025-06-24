@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 11:39:13 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/24 16:41:15 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,20 @@
 # define GREY "\033[90m"
 # define DEFAULT "\033[0m"
 
-# define THINKING 0
-# define EATING 1
-# define SLEEPING 2
+# define DIED 0
+# define THINKING 1
+# define TAKE_FORK 2
+# define EATING 3
+# define SLEEPING 4
 
-typedef struct s_info
+typedef struct s_arg
 {
 	int	philo_count;
 	int	death_time;
 	int	eat_time;
 	int	sleep_time;
 	int	meal_limit;
-}		t_info;
+}		t_arg;
 
 typedef struct s_philo
 {
@@ -51,7 +53,7 @@ typedef struct s_philo
 
 typedef struct s_sim
 {
-	t_info				*args;
+	t_arg				*args;
 	t_philo				*philos;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		print_mutexes;
@@ -72,5 +74,17 @@ void	error_message(const char *msg);
 
 void	init_philos(t_sim *info);
 int		init_simul(int ac, char **av, t_sim *info);
+
+long	get_timestamp_ms(void);
+
+void	*routine(void *arg);
+
+void	print_philo_action(t_philo *philo, int action, long timestamp);
+
+void	philo_take_fork(t_sim *info);
+void	philo_eating(t_sim *info);
+void	philo_sleeping(t_sim *info);
+void	philo_thinking(t_sim *info);
+void	philo_death(t_sim *info);
 
 #endif

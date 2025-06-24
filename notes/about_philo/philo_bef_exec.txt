@@ -75,14 +75,14 @@ GOAL: If you can't answer these clearly, study more
 
 STEP 6: DATA STRUCTURE DESIGN (2 hours)
 CONCRETE TASK: Design on paper, then code
-1. Expand your t_info struct:
-   typedef struct s_info {
+1. Expand your t_arg struct:
+   typedef struct s_arg {
        int num_of_philo;
        int time_to_die;
        int time_to_eat;
        int time_to_sleep;
        int req_meal_count;
-   } t_info;
+   } t_arg;
 
 2. Design philosopher struct:
    typedef struct s_philosopher {
