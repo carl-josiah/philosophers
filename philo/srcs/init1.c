@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 15:08:34 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 10:26:12 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/24 11:35:17 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-void	init_data(int ac, char **av, t_info *data)
+static void	init_data(int ac, char **av, t_info *data)
 {
 	philo_atoi_safe(av[1], &data->philo_count);
 	philo_atoi_safe(av[2], &data->death_time);
@@ -24,7 +24,7 @@ void	init_data(int ac, char **av, t_info *data)
 		data->meal_limit = 0;
 }
 
-int	malloc_philos_and_forks(t_sim *info)
+static int	malloc_philos_and_forks(t_sim *info)
 {
 	info->philos = malloc(sizeof(t_philo) * info->args->philo_count);
 	if (!info->philos)
@@ -35,7 +35,7 @@ int	malloc_philos_and_forks(t_sim *info)
 	return (1);
 }
 
-int	init_forks(t_sim *info)
+static int	init_forks(t_sim *info)
 {
 	int	i;
 
@@ -46,5 +46,16 @@ int	init_forks(t_sim *info)
 			return (0);
 		i++;
 	}
+	return (1);
+}
+
+int	init_simul(int ac, char **av, t_sim *info)
+{
+	init_data(ac, av, info->args);
+	if (!malloc_philos_and_forks(info))
+		return (0);
+	if (!init_forks(info))
+		return (0);
+	init_philo(info);
 	return (1);
 }

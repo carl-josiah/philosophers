@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:37 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 10:26:55 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/24 11:31:39 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 static int	is_correct_input(int ac, char **av)
 {
 	if (!is_valid_argc(ac) || !is_valid_argv(ac, av))
-		return (0);
-	return (1);
-}
-
-int	init_simul(int ac, char **av, t_sim *info)
-{
-	init_data(ac, av, info->args);
-	if (!malloc_philos_and_forks(info))
-		return (0);
-	if (!init_forks(info))
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 10:26:12 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/24 11:39:13 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # define RED "\033[31m"
 # define GREY "\033[90m"
 # define DEFAULT "\033[0m"
+
+# define THINKING 0
+# define EATING 1
+# define SLEEPING 2
 
 typedef struct s_info
 {
@@ -66,8 +70,7 @@ int		is_digit(char c);
 
 void	error_message(const char *msg);
 
-void	init_data(int ac, char **av, t_info *data);
-int		init_forks(t_sim *info);
-int		malloc_philos_and_forks(t_sim *info);
+void	init_philos(t_sim *info);
+int		init_simul(int ac, char **av, t_sim *info);
 
 #endif
