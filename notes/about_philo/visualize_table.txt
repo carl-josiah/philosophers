@@ -1,0 +1,49 @@
+Visualization
+
+Imagine philosophers sitting in a circle, each with a fork between them.
+
+Philosopher i has:
+Left fork: fork at position i
+Right fork: fork at position (i + 1) % philo_count
+
+So, for any number of philosophers:
+
+The last philosopher (i == philo_count - 1) will have their right fork as fork 0 (wrapping around the circle).
+
+Why Modulus?
+The modulus (%) ensures that after the last fork, you loop back to the first fork, keeping the table circular.
+
+Mental Model
+Draw a circle, number the philosophers and forks.
+Each philosopher grabs the fork with their own number (left), and the next fork (right).
+The last philosopher’s right fork is the first fork.
+
+Summary:
+You always use i for left, (i + 1) % philo_count for right.
+This works for any number of philosophers, even 500 or more!
+
+
+
+Philosopher-Fork Arrangement Summary
+
+- Philosophers sit in a circle, each with a fork between them.
+- For philosopher i:
+  - Left fork: fork[i]
+  - Right fork: fork[(i + 1) % philo_count]
+- The last philosopher's right fork wraps around to fork 0, making the table circular.
+- The modulus (%) operator ensures the right fork always wraps to the start after the last fork.
+- Visualize by drawing a circle, numbering philosophers and forks.
+- Each philosopher grabs their own fork (left) and the next fork (right).
+- This logic works for any number of philosophers, even hundreds.
+
+
+Philosopher	Left Fork	Right Fork
+	0			0			1
+	1			1			2
+	2			2			3
+	3			3			4
+	4			4			0
+
+
+right fork: fork[(i + 1) % philo_count] (just means that for the last philosopher's right fork
+make it point to the first philosopher's left fork = fork[0])
