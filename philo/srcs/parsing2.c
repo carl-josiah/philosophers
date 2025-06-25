@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 09:17:34 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/25 09:20:24 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/25 13:02:52 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int	is_valid_argv(int ac, char **av)
 	if (is_valid_num(ac, av) == -1)
 		return (error_message("MUST NOT BE LESS THAN ZERO"), 0);
 	if (is_over_max_philo(av))
-		return (error_message("PHILOSOPHER MUST NOT BE GREATER THAN 200"), 0);
+	{
+		error_message("[philosopher_count] MUST NOT BE GREATER THAN 200");
+		return (0);
+	}
 	return (1);
 }
 
