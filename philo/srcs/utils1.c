@@ -6,20 +6,20 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:12:09 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/19 13:38:41 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/25 20:03:13 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-int	philo_atoi_safe(char *str, int *out)
+int	philo_atoi_safe(char *str, void *out)
 {
 	size_t				i;
 	unsigned long long	num;
 
 	i = 0;
-	*out = 0;
-	num = *out;
+	(*(int *)out) = 0;
+	num = (*(int *)out);
 	while (str[i] && is_delim(str[i]))
 		i++;
 	if (str[i] == '-')
@@ -35,6 +35,6 @@ int	philo_atoi_safe(char *str, int *out)
 	}
 	if (num == 0)
 		return (-1);
-	*out = (int)num;
+	(*(int *)out) = (int)num;
 	return (1);
 }
