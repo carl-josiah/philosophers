@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 16:41:15 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/25 09:20:43 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define TAKE_FORK 2
 # define EATING 3
 # define SLEEPING 4
+# define MAX_PHILO 200
 
 typedef struct s_arg
 {
@@ -45,6 +46,7 @@ typedef struct s_philo
 	int				state;
 	int				meal_count;
 	pthread_t		thread;
+	t_arg			*arg;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*first_fork;
@@ -53,7 +55,6 @@ typedef struct s_philo
 
 typedef struct s_sim
 {
-	t_arg				*args;
 	t_philo				*philos;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		print_mutexes;
@@ -61,8 +62,14 @@ typedef struct s_sim
 	unsigned long long	start_time;
 }						t_sim;
 
+int		is_empty_arg(int ac, char **av);
+int		is_all_digit(int ac, char **av);
+int		is_valid_num(int ac, char **av);
+int		is_over_max_philo(char **av);
+
 int		is_valid_argc(int ac);
 int		is_valid_argv(int ac, char **av);
+int		is_correct_input(int ac, char **av);
 
 int		philo_atoi_safe(char *str, int *out);
 
@@ -72,19 +79,6 @@ int		is_digit(char c);
 
 void	error_message(const char *msg);
 
-void	init_philos(t_sim *info);
-int		init_simul(int ac, char **av, t_sim *info);
-
 long	get_timestamp_ms(void);
-
-void	*routine(void *arg);
-
-void	print_philo_action(t_philo *philo, int action, long timestamp);
-
-void	philo_take_fork(t_sim *info);
-void	philo_eating(t_sim *info);
-void	philo_sleeping(t_sim *info);
-void	philo_thinking(t_sim *info);
-void	philo_death(t_sim *info);
 
 #endif

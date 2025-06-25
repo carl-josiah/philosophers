@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:16:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/24 09:25:47 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/25 09:22:53 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-static int	is_empty_arg(int ac, char **av)
+int	is_empty_arg(int ac, char **av)
 {
 	int		i;
 	size_t	j;
@@ -35,7 +35,7 @@ static int	is_empty_arg(int ac, char **av)
 	return (0);
 }
 
-static int	is_all_digit(int ac, char **av)
+int	is_all_digit(int ac, char **av)
 {
 	int		i;
 	int		has_digit;
@@ -64,7 +64,7 @@ static int	is_all_digit(int ac, char **av)
 	return (1);
 }
 
-static int	is_valid_num(int ac, char **av)
+int	is_valid_num(int ac, char **av)
 {
 	int		i;
 	int		num;
@@ -81,35 +81,11 @@ static int	is_valid_num(int ac, char **av)
 	return (1);
 }
 
-int	is_valid_argc(int ac)
+int	is_over_max_philo(char **av)
 {
-	if (ac == 5 || ac == 6)
-		return (1);
-	error_message("MUST BE 5 OR 6 ARGUMENTS");
-	return (0);
-}
+	int	num;
 
-int	is_valid_argv(int ac, char **av)
-{
-	if (is_empty_arg(ac, av))
-	{
-		error_message("MUST NOT HAVE EMPTY ARGUMENTS");
-		return (0);
-	}
-	if (!is_all_digit(ac, av))
-	{
-		error_message("MUST BE A NUMBER (E.G. \"+42\" or \"42\")");
-		return (0);
-	}
-	if (is_valid_num(ac, av) == 0)
-	{
-		error_message("MUST NOT BE GREATER THAN INT_MAX");
-		return (0);
-	}
-	if (is_valid_num(ac, av) == -1)
-	{
-		error_message("MUST NOT BE LESS THAN ZERO");
-		return (0);
-	}
-	return (1);
+	if (!philo_atoi_safe(av[1], &num) || num > 200)
+		return (1);
+	return (0);
 }

@@ -8,14 +8,12 @@ THREAD		= -pthread
 
 SRCS		= srcs/philo.c \
 			srcs/utils1.c \
-			srcs/parsing.c \
+			srcs/parsing1.c \
+			srcs/parsing2.c \
 			srcs/utils2.c \
 			srcs/error.c \
-			srcs/init1.c \
-			srcs/init2.c \
 			srcs/timing.c \
-			srcs/routine.c \
-			srcs/actions.c \
+
 
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 
