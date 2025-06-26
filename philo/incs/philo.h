@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 18:42:36 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 19:28:14 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,8 @@ int		philo_sleeping(t_philo *philo);
 // routine_actions_utils.c
 int		philo_take_forks(t_philo *philo);
 int		philo_drop_forks(t_philo *philo);
+
+// monitoring.c
+void	*monitoring_thread(void *arg);
 
 #endif

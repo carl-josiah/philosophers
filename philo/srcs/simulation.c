@@ -6,13 +6,13 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 12:24:51 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 18:36:43 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 19:11:48 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-int	create_philo_threads(t_philo *philo)
+static int	create_philo_threads(t_philo *philo)
 {
 	int	i;
 
@@ -28,8 +28,12 @@ int	create_philo_threads(t_philo *philo)
 
 int	start_simulation(t_philo *philo, t_info *info)
 {
+	pthread_t	monitor_thread;
+
 	(void) info;
 	if (!create_philo_threads(philo))
 		return (0);
+	if (pthread_create(&monitor_thread, NULL, monitoring_thread, (void *)info))
+		return (error_msg("pthread_create FAILED"), 0);
 	return (1);
 }

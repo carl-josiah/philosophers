@@ -20,6 +20,7 @@ SRCS		= srcs/philo.c \
 			srcs/routine.c \
 			srcs/routine_actions.c \
 			srcs/routine_actions_utils.c \
+			srcs/monitor.c \
 
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 

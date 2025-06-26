@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 12:49:11 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 18:38:27 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 19:28:44 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,23 @@ int	philo_eating(t_philo *philo)
 {
 	unsigned long long	meal_time;
 
-	if (!philo_take_forks(philo))
+	if (philo->meal_count != philo->info->required_meals)
+	{
+		if (!philo_take_forks(philo))
+			return (0);
+		meal_time = get_timestamp_ms();
+		pthread_mutex_lock(&philo->info->print_lock);
+		printf("%lld %d is eating\n", meal_time, philo->id);
+		pthread_mutex_unlock(&philo->info->print_lock);
+		if (usleep(philo->info->eat_time * 1000) == -1)
+			return (error_msg("usleep() FAILED"), 0);
+		philo->last_meal_time = meal_time;
+		philo->meal_count++;
+		if (!philo_drop_forks(philo))
+			return (0);
+	}
+	else
 		return (0);
-	meal_time = get_timestamp_ms();
-	pthread_mutex_lock(&philo->info->print_lock);
-	printf("%lld %d is eating\n", meal_time, philo->id);
-	pthread_mutex_unlock(&philo->info->print_lock);
-	if (usleep(philo->info->eat_time * 1000) == -1)
-		return (error_msg("usleep() FAILED"), 0);
-	philo->last_meal_time = meal_time;
-	philo->meal_count++;
-	if (!philo_drop_forks(philo))
-		return (0);	
 	return (1);
 }
 
