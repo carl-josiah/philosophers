@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:22:48 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 14:39:06 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 18:35:16 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	init_fork_mutexes(t_info *info)
 	while (i < info->philo_count)
 	{
 		if (pthread_mutex_init(&info->fork_locks[i], NULL))
-			return (0);
+			return (error_msg("pthread_mutex_init() FAILED"), 0);
 		i++;
 	}
 	return (1);

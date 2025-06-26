@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 12:24:51 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 17:48:48 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 18:36:43 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	create_philo_threads(t_philo *philo)
 	while (i < philo->info->philo_count)
 	{
 		if (pthread_create(&philo[i].thread, NULL, philo_routine, &philo[i]))
-			return (0);
+			return (error_msg("pthread_create() FAILED"), 0);
 		i++;
 	}
 	return (1);

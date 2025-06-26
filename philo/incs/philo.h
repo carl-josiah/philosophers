@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 16:44:23 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 18:42:36 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,9 @@ typedef struct s_info
 	int					meals_finished;
 	int					stop_simulation;
 	unsigned long long	start_time;
-	int					turn;
 	int					forks[MAX_PHILO];
 	pthread_mutex_t		fork_locks[MAX_PHILO];
 	pthread_mutex_t		print_lock;
-	pthread_mutex_t		turn_lock;
 	struct s_philo		*philo;
 }						t_info;
 
@@ -82,7 +80,8 @@ int		is_sign(char c);
 int		is_digit(char c);
 
 // error.c
-void	error_message(const char *msg);
+void	error_input(const char *msg);
+void	error_msg(const char *msg);
 
 // timing.c
 long	get_timestamp_ms(void);
