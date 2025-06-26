@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 13:54:35 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 14:45:23 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ long	get_timestamp_ms(void);
 
 // init_info_utils.c
 void	init_args(t_info *info, char **av);
-void	init_info_forks(t_info *info);
+void	init_forks(t_info *info);
 int		init_fork_mutexes(t_info *info);
 
 // init_philo_utils.c
