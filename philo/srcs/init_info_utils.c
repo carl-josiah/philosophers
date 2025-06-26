@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:22:48 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/25 20:05:41 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 10:57:26 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	init_args(t_info *info, char **av)
 		info->required_meals = 0;
 }
 
-void	init_forks(t_info *info)
+void	init_info_forks(t_info *info)
 {
 	int	i;
 
 	i = 0;
 	while (i < info->philo_count)
 	{
-		info->forks[i] = info->philo_data[i].id;
+		info->forks[i] = info->philo[i].id;
 		i++;
 	}
 }

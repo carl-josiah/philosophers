@@ -64,35 +64,35 @@ void	*resource_hierarchy(void *arg)
 
 int main(void)
 {
-    t_data          philo_data[3];
+    t_data          philo[3];
     pthread_t       philo[3];
     pthread_mutex_t fork[3];
 
     for (int i = 0; i < 3; i++)
-        philo_data[i].philo_id = i;
+        philo[i].philo_id = i;
     for (int i = 0; i < 3; i++)
     	pthread_mutex_init(&fork[i], NULL);
-	philo_data[0].left_fork = &fork[0];
-	philo_data[0].right_fork = &fork[1];
-	philo_data[1].left_fork = &fork[2];
-	philo_data[1].right_fork = &fork[0];
-	philo_data[2].left_fork = &fork[1];
-	philo_data[2].right_fork = &fork[2];
+	philo[0].left_fork = &fork[0];
+	philo[0].right_fork = &fork[1];
+	philo[1].left_fork = &fork[2];
+	philo[1].right_fork = &fork[0];
+	philo[2].left_fork = &fork[1];
+	philo[2].right_fork = &fork[2];
 	for (int i = 0; i < 3; i++)
 	{
-		if (philo_data[i].left_fork < philo_data[i].right_fork)
+		if (philo[i].left_fork < philo[i].right_fork)
 		{
-			philo_data[i].first_fork = philo_data[i].left_fork;
-			philo_data[i].second_fork = philo_data[i].right_fork;
+			philo[i].first_fork = philo[i].left_fork;
+			philo[i].second_fork = philo[i].right_fork;
 		}
 		else
 		{
-			philo_data[i].first_fork = philo_data[i].right_fork;
-			philo_data[i].second_fork = philo_data[i].left_fork;
+			philo[i].first_fork = philo[i].right_fork;
+			philo[i].second_fork = philo[i].left_fork;
 		}
 	}
 	for (int i = 0; i < 3; i++)
-		pthread_create(&philo[i], NULL, resource_hierarchy, &philo_data[i]);
+		pthread_create(&philo[i], NULL, resource_hierarchy, &philo[i]);
 	for (int i = 0; i < 3; i++)
 		pthread_join(philo[i], NULL);
 	for (int i = 0; i < 3; i++)

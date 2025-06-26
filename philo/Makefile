@@ -17,7 +17,6 @@ SRCS		= srcs/philo.c \
 			srcs/init_philo_utils.c \
 			srcs/init_info_utils.c \
 
-
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 
 OBJS_DIR	= mkdir -p objs

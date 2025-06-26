@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/25 20:03:36 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 11:12:47 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_info
 	int					forks[MAX_PHILO];
 	pthread_mutex_t		fork_locks[MAX_PHILO];
 	pthread_mutex_t		print_lock;
-	struct s_philo		*philo_data;
+	struct s_philo		*philo;
 }						t_info;
 
 // parsing1.c
@@ -87,7 +87,7 @@ long	get_timestamp_ms(void);
 
 // init_info_utils.c
 void	init_args(t_info *info, char **av);
-void	init_forks(t_info *info);
+void	init_info_forks(t_info *info);
 int		init_fork_mutexes(t_info *info);
 
 // init_philo_utils.c
