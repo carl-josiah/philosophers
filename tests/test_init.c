@@ -32,8 +32,8 @@ void	test_init(t_philo *philo, t_info *info)
         printf("  last_meal_time: %llu\n", philo[i].last_meal_time);
         printf("  left_fork:      %p (value: %d)\n", (void *)philo[i].left_fork, *philo[i].left_fork);
         printf("  right_fork:     %p (value: %d)\n", (void *)philo[i].right_fork, *philo[i].right_fork);
-        printf("  left_lock:      %p\n", (void *)philo[i].left_lock);
-        printf("  right_lock:     %p\n", (void *)philo[i].right_lock);
+        printf("  lock_left:      %p\n", (void *)philo[i].lock_left);
+        printf("  lock_right:     %p\n", (void *)philo[i].lock_right);
         printf("  thread addr:    %p\n", (void *)&philo[i].thread);
         printf("  info pointer:   %p\n", (void *)philo[i].info);
     }
