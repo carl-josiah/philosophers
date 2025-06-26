@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:55:57 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/25 19:25:13 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 13:40:33 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	init_philo_locks(t_philo *philo)
 	philos = philo->info->philo_count;
 	while (i < philos)
 	{
-		philo[i].left_lock = &philo[i].info->fork_locks[i];
-		philo[i].right_lock = &philo[i].info->fork_locks[(i + 1) % philos];
+		philo[i].lock_left = &philo[i].info->fork_locks[i];
+		philo[i].lock_right = &philo[i].info->fork_locks[(i + 1) % philos];
 		i++;
 	}
 }

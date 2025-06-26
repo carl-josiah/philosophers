@@ -16,6 +16,10 @@ SRCS		= srcs/philo.c \
 			srcs/init.c \
 			srcs/init_philo_utils.c \
 			srcs/init_info_utils.c \
+			srcs/simulation.c \
+			srcs/routine.c \
+			srcs/routine_actions.c \
+			srcs/routine_actions_utils.c \
 
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 

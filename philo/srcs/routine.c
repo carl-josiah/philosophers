@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simulation.c                                       :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/26 12:24:51 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 13:53:40 by ccastro          ###   ########.fr       */
+/*   Created: 2025/06/26 12:31:12 by ccastro           #+#    #+#             */
+/*   Updated: 2025/06/26 13:54:44 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-int	create_philo_threads(t_philo *philo)
+void	*philo_routine(void *arg)
 {
-	int	i;
+	t_philo	*philo;
+	int		is_philo_dead;
+	int		is_meals_finished;
+	int		is_sim_done;
 
-	i = 0;
-	while (i < philo->info->philo_count)
+	philo = (t_philo *)arg;
+	is_philo_dead = philo->info->philo_died;
+	is_meals_finished = philo->info->meals_finished;
+	is_sim_done = philo->info->stop_simulation;
+	while (!(is_philo_dead || is_meals_finished) && is_sim_done)
 	{
-		if (pthread_create(&philo->thread, NULL, philo_routine, &philo[i]))
+		philo_thinking(philo);
+		if (!philo_eating(philo))
 			return (0);
-		i++;
+		if (!philo_sleeping(philo))
+			return (0);
 	}
-	return (1);
-}
-
-int	start_simulation(t_philo *philo, t_info *info)
-{
-	(void) info;
-	
-	if (!create_philo_threads(philo))
-		return (0);
-	return (1);
+	return (NULL);
 }

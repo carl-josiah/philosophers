@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simulation.c                                       :+:      :+:    :+:   */
+/*   routine_actions_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/26 12:24:51 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 13:53:40 by ccastro          ###   ########.fr       */
+/*   Created: 2025/06/26 13:08:21 by ccastro           #+#    #+#             */
+/*   Updated: 2025/06/26 13:55:03 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-int	create_philo_threads(t_philo *philo)
+int	philo_take_forks(t_philo *philo)
 {
-	int	i;
-
-	i = 0;
-	while (i < philo->info->philo_count)
-	{
-		if (pthread_create(&philo->thread, NULL, philo_routine, &philo[i]))
-			return (0);
-		i++;
-	}
+	(void) philo;
+	
 	return (1);
 }
 
-int	start_simulation(t_philo *philo, t_info *info)
+int	philo_drop_forks(t_philo *philo)
 {
-	(void) info;
-	
-	if (!create_philo_threads(philo))
-		return (0);
+	(void) philo;
+
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 11:12:47 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/26 13:54:35 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_philo
 	unsigned long long	last_meal_time;
 	int					*left_fork;
 	int					*right_fork;
-	pthread_mutex_t		*left_lock;
-	pthread_mutex_t		*right_lock;
+	pthread_mutex_t		*lock_left;
+	pthread_mutex_t		*lock_right;
 	pthread_t			thread;
 	struct s_info		*info;
 }						t_philo;
@@ -99,5 +99,20 @@ void	init_philo_locks(t_philo *philo);
 
 // init.c
 int		init(t_philo *philo, t_info *info, char **av);
+
+// simulation.c
+int		start_simulation(t_philo *philo, t_info *info);
+
+// routine.c
+void	*philo_routine(void *arg);
+
+// routine_actions.c
+void	philo_thinking(t_philo *philo);
+int		philo_eating(t_philo *philo);
+int		philo_sleeping(t_philo *philo);
+
+// routine_actions_utils.c
+int		philo_take_forks(t_philo *philo);
+int		philo_drop_forks(t_philo *philo);
 
 #endif
