@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/27 11:58:15 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/27 15:41:39 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ int		init_fork_mutexes(t_info *info);
 // init_philo_utils.c
 void	init_id(t_philo *philo);
 void	init_meal_count(t_philo *philo);
-void	init_last_meal_time(t_philo *philo);
 void	init_philo_forks(t_philo *philo);
 void	init_philo_locks(t_philo *philo);
 

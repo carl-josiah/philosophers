@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 19:12:33 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/27 13:44:22 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/27 16:09:26 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static int	monitor_meals(t_info *info)
 		info->meal_limit_reached = 1;
 		return (1);
 	}
+	return (0);
 }
 
 void	*monitoring_thread(void *arg)
@@ -68,5 +69,7 @@ void	*monitoring_thread(void *arg)
 		}
 		i++;
 	}
+	if (usleep(1000) == -1)
+		return (error_msg("usleep() FAILED"), NULL);
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 12:49:11 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 19:28:44 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/27 16:08:02 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	philo_eating(t_philo *philo)
 {
 	unsigned long long	meal_time;
 
-	if (philo->meal_count != philo->info->required_meals)
+	if ((philo->meal_count < philo->info->required_meals)
+		|| !philo->info->required_meals)
 	{
 		if (!philo_take_forks(philo))
 			return (0);

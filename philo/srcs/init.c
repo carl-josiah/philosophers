@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:42:45 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/27 11:58:15 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/27 15:41:51 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	init_philo(t_philo *philo)
 {
 	init_id(philo);
 	init_meal_count(philo);
-	init_last_meal_time(philo);
 	init_philo_forks(philo);
 	init_philo_locks(philo);
 }
