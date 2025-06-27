@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/26 19:28:14 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/06/27 11:58:15 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_info
 	unsigned long long	sleep_time;
 	int					required_meals;
 	int					philo_died;
-	int					meals_finished;
+	int					meal_limit_reached;
 	int					stop_simulation;
 	unsigned long long	start_time;
 	int					forks[MAX_PHILO];

@@ -11,7 +11,7 @@ void	test_init(t_philo *philo, t_info *info)
     printf("sleep_time:       %llu\n", info->sleep_time);
     printf("required_meals:   %d\n", info->required_meals);
     printf("philo_died:       %d\n", info->philo_died);
-    printf("meals_finished:   %d\n", info->meals_finished);
+    printf("meal_limit_reached:   %d\n", info->meal_limit_reached);
     printf("stop_simulation:  %d\n", info->stop_simulation);
     printf("start_time:       %llu\n", info->start_time);
     printf("philo pointer:    %p\n", (void *)info->philo);
