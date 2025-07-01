@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/01 18:23:47 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/01 19:18:25 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,8 @@ int		init(t_philo *philo, t_info *info, char **av);
 
 // simulation.c
 int		start_simulation(t_philo *philo, t_info *info);
+
+// test_init.c
+void	test_init(t_philo *philo, t_info *info);
 
 #endif

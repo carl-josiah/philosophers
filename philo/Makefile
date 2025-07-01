@@ -2,7 +2,7 @@ NAME		= philo
 
 CC			= cc
 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g3
 
 THREAD		= -pthread
 
@@ -17,6 +17,8 @@ SRCS		= srcs/philo.c \
 			srcs/init_philo_utils.c \
 			srcs/init_info_utils.c \
 			srcs/simulation.c \
+			\
+			srcs/test_init.c \
 
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 
