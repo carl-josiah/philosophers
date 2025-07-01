@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/06/27 15:41:39 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/01 18:23:47 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int		init_fork_mutexes(t_info *info);
 // init_philo_utils.c
 void	init_id(t_philo *philo);
 void	init_meal_count(t_philo *philo);
+void	init_last_meal_time(t_philo *philo);
 void	init_philo_forks(t_philo *philo);
 void	init_philo_locks(t_philo *philo);
 
@@ -102,20 +103,5 @@ int		init(t_philo *philo, t_info *info, char **av);
 
 // simulation.c
 int		start_simulation(t_philo *philo, t_info *info);
-
-// routine.c
-void	*philo_routine(void *arg);
-
-// routine_actions.c
-void	philo_thinking(t_philo *philo);
-int		philo_eating(t_philo *philo);
-int		philo_sleeping(t_philo *philo);
-
-// routine_actions_utils.c
-int		philo_take_forks(t_philo *philo);
-int		philo_drop_forks(t_philo *philo);
-
-// monitoring.c
-void	*monitoring_thread(void *arg);
 
 #endif
