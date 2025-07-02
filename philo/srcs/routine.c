@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:15:20 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/02 11:26:02 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/02 18:50:21 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,4 @@ void	*routine(void *arg)
 			return (NULL);
 	}
 	return (NULL);
-}
+}	
