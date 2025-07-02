@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simulation.c                                       :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 17:49:24 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/02 11:41:34 by ccastro          ###   ########.fr       */
+/*   Created: 2025/07/02 11:34:31 by ccastro           #+#    #+#             */
+/*   Updated: 2025/07/02 11:41:00 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-int	start_simulation(t_philo *philo, t_info *info)
+// static int	monitor_death(t_philo *philo);
+
+// static int	monitor_death(t_philo *philo)
+// {
+// 	(void) philo;
+// 	return (1);
+// }
+
+int	monitor(t_philo *philo, t_info *info)
 {
-	init_eating_order(info);
-	if (!monitor(philo, info))
-		return (0);
-	if (!create_mutexes(info))
-		return (0);
-	if (!create_threads(philo))
-		return (0);
-	test_init(philo, info);
-	if (!join_threads(philo))
-		return (0);
-	if (!destroy_mutexes(info))
-		return (0);
+	(void) philo;
+	(void) info;
+	// while (1)
+	// {
+	// 	if (monitor_death(philo))
+	// 		return (0);
+	// 	if (monitor_meals(info))
+	// 		return (0);
+	// }
 	return (1);
 }

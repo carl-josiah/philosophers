@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/01 19:18:25 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/02 11:36:35 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_info
 	int					required_meals;
 	int					philo_died;
 	int					meal_limit_reached;
-	int					stop_simulation;
+	int					fork_init_flag;
 	unsigned long long	start_time;
 	int					forks[MAX_PHILO];
 	pthread_mutex_t		fork_locks[MAX_PHILO];
@@ -103,6 +103,24 @@ int		init(t_philo *philo, t_info *info, char **av);
 
 // simulation.c
 int		start_simulation(t_philo *philo, t_info *info);
+
+// simulation_utils.c
+void	init_eating_order(t_info *info);
+int		create_threads(t_philo *philo);
+int 	create_mutexes(t_info *info);
+int		join_threads(t_philo *philo);
+int		destroy_mutexes(t_info *info);
+
+// routine.c
+void	*routine(void *arg);
+
+// routine_utils.c
+int		drop_forks(t_philo *philo);
+int		pick_up_forks(t_philo *philo);
+int		eat(t_philo *philo);
+
+// monitor.c
+int		monitor(t_philo *philo, t_info *info);
 
 // test_init.c
 void	test_init(t_philo *philo, t_info *info);

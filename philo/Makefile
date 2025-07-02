@@ -17,6 +17,10 @@ SRCS		= srcs/philo.c \
 			srcs/init_philo_utils.c \
 			srcs/init_info_utils.c \
 			srcs/simulation.c \
+			srcs/routine.c \
+			srcs/routine_utils.c \
+			srcs/simulation_utils.c \
+			srcs/monitor.c \
 			\
 			srcs/test_init.c \
 

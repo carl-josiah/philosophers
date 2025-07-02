@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:42:45 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/01 18:15:07 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/02 09:20:51 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	init_info(t_philo *philo, t_info *info, char **av)
 	init_args(info, av);
 	info->philo_died = 0;
 	info->meal_limit_reached = 0;
-	info->stop_simulation = 0;
+	info->fork_init_flag = 0;
 	info->start_time = get_timestamp_ms();
 	init_forks(info);
 	if (!init_fork_mutexes(info))

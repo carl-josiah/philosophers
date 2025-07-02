@@ -12,7 +12,7 @@ void	test_init(t_philo *philo, t_info *info)
     printf("required_meals:   %d\n", info->required_meals);
     printf("philo_died:       %d\n", info->philo_died);
     printf("meal_limit_reached:   %d\n", info->meal_limit_reached);
-    printf("stop_simulation:  %d\n", info->stop_simulation);
+    printf("fork_init_flag:  %d\n", info->fork_init_flag);
     printf("start_time:       %llu\n", info->start_time);
     printf("philo pointer:    %p\n", (void *)info->philo);
     printf("forks array:      %p\n", (void *)info->forks);
