@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/03 13:59:39 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/03 18:42:57 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define DEFAULT "\033[0m"
 
 # define DIED 0
-# define THINKING 1
-# define TAKE_FORK 2
-# define EATING 3
+# define TAKE_FORK 1
+# define EATING 2
+# define THINKING 3
 # define SLEEPING 4
 # define MAX_PHILO 200
 
