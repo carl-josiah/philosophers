@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:34:31 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/03 15:57:45 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/04 18:58:00 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ static int	monitor_death(t_philo *philo);
 
 static int	monitor_death(t_philo *philo)
 {
-	long	elapsed;
 	if ((get_timestamp_ms() - philo->last_meal_time) > philo->info->death_time)
 	{
-		philo->info->philo_died = 1;
-		elapsed = get_timestamp_ms() - philo->info->start_time;
-		printf("%lu %d died\n", elapsed, philo->id);
+		if (!print_action(philo, DIED))
+			return (0);
 		return (1);
 	}
 	else
@@ -55,7 +53,7 @@ void	*monitor_routine(void *arg)
 int	monitor(t_philo *philo)
 {
 	pthread_t	monitor;
-	
+
 	(void) philo;
 	if (pthread_create(&monitor, NULL, monitor_routine, philo))
 		return (0);

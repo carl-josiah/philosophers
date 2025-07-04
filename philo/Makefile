@@ -22,8 +22,10 @@ SRCS		= srcs/philo.c \
 			srcs/simulation_utils.c \
 			srcs/monitor.c \
 			srcs/print.c \
+			srcs/print_utils.c \
 			\
 			srcs/test_init.c \
+			\
 
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 

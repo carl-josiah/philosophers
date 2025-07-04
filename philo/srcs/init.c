@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:42:45 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/03 13:40:32 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/04 18:48:24 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int	init_info(t_philo *philo, t_info *info, char **av)
 	info->start_time = get_timestamp_ms();
 	init_forks(info);
 	if (!init_fork_mutexes(info))
+		return (0);
+	if (pthread_mutex_init(&info->print_lock, NULL))
 		return (0);
 	info->philo = philo;
 	return (1);

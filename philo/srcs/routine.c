@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:15:20 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/03 18:26:11 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/04 18:07:20 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ static int	philo_eating(t_philo *philo)
 
 static int	philo_thinking(t_philo *philo)
 {
-	long	elapsed;
-
-	elapsed = get_timestamp_ms() - philo->info->start_time;
-	printf("%lu %d is thinking\n", elapsed, philo->id);
+	if (!print_action(philo, THINKING))
+		return (0);
 	if (usleep(1000) == -1)
 		return (0);
 	return (1);
@@ -40,10 +38,8 @@ static int	philo_thinking(t_philo *philo)
 
 static int	philo_sleeping(t_philo *philo)
 {
-	long	elapsed;
-	
-	elapsed = get_timestamp_ms() - philo->info->start_time;
-	printf("%lu %d is sleeping\n", elapsed, philo->id);
+	if (!print_action(philo, SLEEPING))
+		return (0);
 	if (usleep(philo->info->sleep_time * 1000) == -1)
 		return (0);
 	return (1);
