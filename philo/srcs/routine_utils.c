@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:17:47 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/07 14:37:14 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/07 17:07:22 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,22 @@ int	pick_up_forks(t_philo *philo)
 		if (usleep(1000) == -1)
 			return (0);
 	}
+	if (philo->info->philo_died)
+		return (0);
 	if (pthread_mutex_lock(philo->lock_left))
 		return (0);
+	printf("%d locked left\n", philo->id);
 	*philo->left_fork = philo->id;
 	if (!print_action(philo, TAKE_FORK))
+		return (pthread_mutex_unlock(philo->lock_right), 0);
+	if (philo->info->philo_died)
 		return (0);
 	if (pthread_mutex_lock(philo->lock_right))
 		return (0);
+	printf("%d locked right\n", philo->id);
 	*philo->right_fork = philo->id;
 	if (!print_action(philo, TAKE_FORK))
-		return (0);
+		return (pthread_mutex_unlock(philo->lock_right), 0);
 	return (1);
 }
 

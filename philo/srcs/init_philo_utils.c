@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:55:57 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/01 18:17:40 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/07 15:49:16 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	init_last_meal_time(t_philo *philo)
 	philos = philo->info->philo_count;
 	while (i < philos)
 	{
-		philo[i].last_meal_time = 0;
+		philo[i].last_meal_time = philo->info->start_time;
 		i++;
 	}
 }

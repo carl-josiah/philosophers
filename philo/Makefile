@@ -22,6 +22,7 @@ SRCS		= srcs/philo.c \
 			srcs/simulation_utils.c \
 			srcs/printing.c \
 			srcs/printing_utils.c \
+			srcs/monitor.c \
 			\
 			srcs/test_init.c \
 			\

@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/07 14:42:15 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/07 15:28:04 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,10 @@ void	print_take_fork(t_philo *philo);
 void	print_eating(t_philo *philo);
 void	print_thinking(t_philo *philo);
 void	print_sleeping(t_philo *philo);
+void	print_died(t_philo *philo);
+
+// monitor.c
+void	monitor(t_philo *philo, t_info *info);
+
 
 #endif

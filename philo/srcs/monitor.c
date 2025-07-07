@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simulation.c                                       :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 17:49:24 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/07 15:07:31 by ccastro          ###   ########.fr       */
+/*   Created: 2025/07/07 15:07:43 by ccastro           #+#    #+#             */
+/*   Updated: 2025/07/07 15:29:17 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-int	start_simulation(t_philo *philo, t_info *info)
+void	monitor(t_philo *philo, t_info *info)
 {
-	init_eating_order(info);
-	if (!create_mutexes(info))
-		return (0);
-	if (!create_threads(philo))
-		return (0);
-	monitor(philo, info);
-	if (!join_threads(philo))
-		return (0);
-	if (!destroy_mutexes(info))
-		return (0);
-	return (1);
+	int	i;
+
+	i = 0;
+	while (1)
+	{
+		if (i == info->philo_count)
+			i = 0;
+		if ((get_timestamp_ms() - philo[i].last_meal_time)
+			> philo[i].info->death_time)
+		{
+			info->philo_died = 1;
+			if (!print_action(&philo[i], DIED))
+				return ;
+			return ;
+		}
+		i++;
+	}
 }
