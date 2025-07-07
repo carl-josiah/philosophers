@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simulation.c                                       :+:      :+:    :+:   */
+/*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 17:49:24 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/07 14:19:17 by ccastro          ###   ########.fr       */
+/*   Created: 2025/07/07 14:27:18 by ccastro           #+#    #+#             */
+/*   Updated: 2025/07/07 14:44:11 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-int	start_simulation(t_philo *philo, t_info *info)
+int	print_action(t_philo *philo, int action)
 {
-	init_eating_order(info);
-	if (!create_mutexes(info))
+	if (pthread_mutex_lock(&philo->info->print_lock))
 		return (0);
-	if (!create_threads(philo))
-		return (0);
-	if (!join_threads(philo))
-		return (0);
-	if (!destroy_mutexes(info))
+	if (action == TAKE_FORK)
+		print_take_fork(philo);
+	if (action == EATING)
+		print_eating(philo);
+	if (action == THINKING)
+		print_thinking(philo);
+	if (action == SLEEPING)
+		print_sleeping(philo);
+	if (pthread_mutex_unlock(&philo->info->print_lock))
 		return (0);
 	return (1);
 }

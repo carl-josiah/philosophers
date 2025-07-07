@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_utils.c                                      :+:      :+:    :+:   */
+/*   printing_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/04 16:37:10 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/04 18:32:23 by ccastro          ###   ########.fr       */
+/*   Created: 2025/07/07 14:31:19 by ccastro           #+#    #+#             */
+/*   Updated: 2025/07/07 14:41:48 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,7 @@ void	print_thinking(t_philo *philo)
 void	print_sleeping(t_philo *philo)
 {
 	long	elapsed;
-	
+
 	elapsed = get_timestamp_ms() - philo->info->start_time;
 	printf("%lu %d is sleeping\n", elapsed, philo->id);
-}
-
-void	print_death(t_philo *philo)
-{
-	long	elapsed;
-
-	elapsed = get_timestamp_ms() - philo->info->start_time;
-	printf("%lu %d died\n", elapsed, philo->id);
 }

@@ -6,17 +6,11 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:17:47 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/04 18:07:37 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/07 14:37:14 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
-
-// static void	drop_one_fork(pthread_mutex_t *lock)
-// {
-// 	if (pthread_mutex_unlock(lock))
-// 		error_msg("pthread_mutex_unlock() FAILED");
-// }
 
 int	pick_up_forks(t_philo *philo)
 {
@@ -40,9 +34,9 @@ int	pick_up_forks(t_philo *philo)
 
 int	eat(t_philo *philo)
 {
+	philo->last_meal_time = get_timestamp_ms();
 	if (!print_action(philo, EATING))
 		return (0);
-	philo->last_meal_time = get_timestamp_ms();
 	if (usleep(philo->info->eat_time * 1000) == -1)
 		return (0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/04 18:26:37 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/07 14:42:15 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,20 +119,16 @@ int		drop_forks(t_philo *philo);
 int		pick_up_forks(t_philo *philo);
 int		eat(t_philo *philo);
 
-// monitor.c
-int		monitor(t_philo *philo);
+// test_init.c
+void	test_init(t_philo *philo, t_info *info);
 
-// print.c
+// printing.c
 int		print_action(t_philo *philo, int action);
 
-// print_utils.c
+// printing_utils.c
 void	print_take_fork(t_philo *philo);
 void	print_eating(t_philo *philo);
 void	print_thinking(t_philo *philo);
 void	print_sleeping(t_philo *philo);
-void	print_death(t_philo *philo);
-
-// test_init.c
-void	test_init(t_philo *philo, t_info *info);
 
 #endif
