@@ -6,20 +6,19 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:27:18 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/07 17:05:36 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/08 16:51:41 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-int	print_action(t_philo *philo, int action)
+void	print_action(t_philo *philo, int action)
 {
-	// if (pthread_mutex_lock(&philo->info->print_lock))
-	// 	return (0);
+	pthread_mutex_lock(&philo->info->print_lock);
 	// if (philo->info->philo_died && action != DIED)
-		// return (pthread_mutex_unlock(&philo->info->print_lock), 0);
-	if (philo->info->philo_died && action != DIED)
-		return (0);
+	// 	return (pthread_mutex_unlock(&philo->info->print_lock), 0);
+	// if (philo->info->philo_died && action != DIED)
+	// 	return (0);
 	if (action == TAKE_FORK)
 		print_take_fork(philo);
 	if (action == EATING)
@@ -30,7 +29,6 @@ int	print_action(t_philo *philo, int action)
 		print_sleeping(philo);
 	if (action == DIED)
 		print_died(philo);
-	// if (pthread_mutex_unlock(&philo->info->print_lock))
-	// 	return (0);
+	pthread_mutex_unlock(&philo->info->print_lock);
 	return (1);
 }

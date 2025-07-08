@@ -20,12 +20,7 @@ SRCS		= srcs/philo.c \
 			srcs/routine.c \
 			srcs/routine_utils.c \
 			srcs/simulation_utils.c \
-			srcs/printing.c \
-			srcs/printing_utils.c \
 			srcs/monitor.c \
-			\
-			srcs/test_init.c \
-			\
 
 OBJS		= $(SRCS:srcs/%.c=objs/%.o)
 

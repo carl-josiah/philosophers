@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:17:47 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/07 17:07:22 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/08 18:34:57 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,38 @@
 
 int	pick_up_forks(t_philo *philo)
 {
+	if (philo->info->philo_died)
+		return (0);
 	while (philo->id == *philo->left_fork || philo->id == *philo->right_fork)
 	{
-		if (usleep(1000) == -1)
+		if (philo->info->philo_died)
 			return (0);
+		usleep(1000);
 	}
 	if (philo->info->philo_died)
 		return (0);
-	if (pthread_mutex_lock(philo->lock_left))
-		return (0);
-	printf("%d locked left\n", philo->id);
+	pthread_mutex_lock(philo->lock_left);
 	*philo->left_fork = philo->id;
-	if (!print_action(philo, TAKE_FORK))
-		return (pthread_mutex_unlock(philo->lock_right), 0);
 	if (philo->info->philo_died)
+	{
+		pthread_mutex_unlock(philo->lock_left);
 		return (0);
-	if (pthread_mutex_lock(philo->lock_right))
-		return (0);
-	printf("%d locked right\n", philo->id);
+	}
+	pthread_mutex_lock(philo->lock_right);
 	*philo->right_fork = philo->id;
-	if (!print_action(philo, TAKE_FORK))
-		return (pthread_mutex_unlock(philo->lock_right), 0);
 	return (1);
 }
 
-int	eat(t_philo *philo)
+void	eat(t_philo *philo)
 {
+	if (philo->info->philo_died)
+		return ;
 	philo->last_meal_time = get_timestamp_ms();
-	if (!print_action(philo, EATING))
-		return (0);
-	if (usleep(philo->info->eat_time * 1000) == -1)
-		return (0);
-	return (1);
+	usleep(philo->info->eat_time * 1000);
 }
 
-int	drop_forks(t_philo *philo)
+void	drop_forks(t_philo *philo)
 {
-	if (pthread_mutex_unlock(philo->lock_right))
-		return (0);
-	if (pthread_mutex_unlock(philo->lock_left))
-		return (0);
-	return (1);
+	pthread_mutex_unlock(philo->lock_right);
+	pthread_mutex_unlock(philo->lock_left);
 }

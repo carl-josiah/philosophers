@@ -6,13 +6,13 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:37 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/02 11:40:10 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/08 16:51:10 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-int	main(int ac, char **av) // don't forget to remove -g3 flag, test_init in src, inc, and make
+int	main(int ac, char **av)
 {
 	t_philo	philo[MAX_PHILO];
 	t_info	info;
@@ -23,6 +23,5 @@ int	main(int ac, char **av) // don't forget to remove -g3 flag, test_init in src
 		return (EXIT_FAILURE);
 	if (!start_simulation(philo, &info))
 		return (EXIT_FAILURE);
-	// test_init(philo, &info);
 	return (EXIT_SUCCESS);
 }

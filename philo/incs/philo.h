@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/07 15:28:04 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/08 18:13:47 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int		start_simulation(t_philo *philo, t_info *info);
 // simulation_utils.c
 void	init_eating_order(t_info *info);
 int		create_threads(t_philo *philo);
-int 	create_mutexes(t_info *info);
+int		create_mutexes(t_info *info);
 int		join_threads(t_philo *philo);
 int		destroy_mutexes(t_info *info);
 
@@ -115,25 +115,11 @@ int		destroy_mutexes(t_info *info);
 void	*routine(void *arg);
 
 // routine_utils.c
-int		drop_forks(t_philo *philo);
+void	drop_forks(t_philo *philo);
 int		pick_up_forks(t_philo *philo);
-int		eat(t_philo *philo);
-
-// test_init.c
-void	test_init(t_philo *philo, t_info *info);
-
-// printing.c
-int		print_action(t_philo *philo, int action);
-
-// printing_utils.c
-void	print_take_fork(t_philo *philo);
-void	print_eating(t_philo *philo);
-void	print_thinking(t_philo *philo);
-void	print_sleeping(t_philo *philo);
-void	print_died(t_philo *philo);
+void	eat(t_philo *philo);
 
 // monitor.c
 void	monitor(t_philo *philo, t_info *info);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:07:43 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/07 15:29:17 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/08 18:52:53 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	monitor(t_philo *philo, t_info *info)
 			> philo[i].info->death_time)
 		{
 			info->philo_died = 1;
-			if (!print_action(&philo[i], DIED))
-				return ;
+			printf("death detected!\n");
 			return ;
 		}
 		i++;
+		usleep(1000);
 	}
 }
