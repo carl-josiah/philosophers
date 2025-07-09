@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/09 01:58:50 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/09 11:02:29 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	error_msg(const char *msg);
 
 // timing.c
 unsigned long long	get_timestamp_ms(void);
-unsigned long long	greater_usleep(unsigned long long time, t_philo *philo);
 
 // init_info_utils.c
 void	init_args(t_info *info, char **av);
@@ -105,7 +104,6 @@ void	init_philo_locks(t_philo *philo);
 void	init(t_philo *philo, t_info *info, char **av);
 
 // simulation.c
-int		is_simulation_end(t_info *info);
 int		start_simulation(t_philo *philo, t_info *info);
 
 // simulation_utils.c
@@ -120,10 +118,7 @@ void	*routine(void *arg);
 
 // routine_utils.c
 void	drop_forks(t_philo *philo);
-int		pick_up_forks(t_philo *philo);
+void	pick_up_forks(t_philo *philo);
 void	eat(t_philo *philo);
-
-// monitor.c
-void	monitor(t_philo *philo, t_info *info);
 
 #endif
