@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/08 18:13:47 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/09 01:58:50 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_philo
 	int					*right_fork;
 	pthread_mutex_t		*lock_left;
 	pthread_mutex_t		*lock_right;
+	pthread_mutex_t		meal_time_lock;
 	pthread_t			thread;
 	struct s_info		*info;
 }						t_philo;
@@ -57,6 +58,7 @@ typedef struct s_info
 	int					forks[MAX_PHILO];
 	pthread_mutex_t		fork_locks[MAX_PHILO];
 	pthread_mutex_t		print_lock;
+	pthread_mutex_t		status_lock;
 	struct s_philo		*philo;
 }						t_info;
 
@@ -84,12 +86,13 @@ void	error_input(const char *msg);
 void	error_msg(const char *msg);
 
 // timing.c
-long	get_timestamp_ms(void);
+unsigned long long	get_timestamp_ms(void);
+unsigned long long	greater_usleep(unsigned long long time, t_philo *philo);
 
 // init_info_utils.c
 void	init_args(t_info *info, char **av);
 void	init_forks(t_info *info);
-int		init_fork_mutexes(t_info *info);
+void	init_fork_mutexes(t_info *info);
 
 // init_philo_utils.c
 void	init_id(t_philo *philo);
@@ -99,17 +102,18 @@ void	init_philo_forks(t_philo *philo);
 void	init_philo_locks(t_philo *philo);
 
 // init.c
-int		init(t_philo *philo, t_info *info, char **av);
+void	init(t_philo *philo, t_info *info, char **av);
 
 // simulation.c
+int		is_simulation_end(t_info *info);
 int		start_simulation(t_philo *philo, t_info *info);
 
 // simulation_utils.c
 void	init_eating_order(t_info *info);
 int		create_threads(t_philo *philo);
-int		create_mutexes(t_info *info);
-int		join_threads(t_philo *philo);
-int		destroy_mutexes(t_info *info);
+void	create_mutexes(t_info *info);
+void	join_threads(t_philo *philo);
+void	destroy_mutexes(t_info *info);
 
 // routine.c
 void	*routine(void *arg);

@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:37 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/08 16:51:10 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/09 00:38:01 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	main(int ac, char **av)
 
 	if (!is_correct_input(ac, av))
 		return (EXIT_FAILURE);
-	if (!init(philo, &info, av))
-		return (EXIT_FAILURE);
+	init(philo, &info, av);
 	if (!start_simulation(philo, &info))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

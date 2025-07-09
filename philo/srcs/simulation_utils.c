@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:18:40 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/02 11:30:58 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/09 01:13:08 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	create_threads(t_philo *philo)
 	return (1);
 }
 
-int	create_mutexes(t_info *info)
+void	create_mutexes(t_info *info)
 {
 	int	i;
 	int	philos;
@@ -60,14 +60,12 @@ int	create_mutexes(t_info *info)
 	philos = info->philo_count;
 	while (i < philos)
 	{
-		if (pthread_mutex_init(&info->fork_locks[i], NULL))
-			return (0);
+		pthread_mutex_init(&info->fork_locks[i], NULL);
 		i++;
 	}
-	return (1);
 }
 
-int	join_threads(t_philo *philo)
+void	join_threads(t_philo *philo)
 {
 	int	i;
 	int	philos;
@@ -76,14 +74,12 @@ int	join_threads(t_philo *philo)
 	philos = philo->info->philo_count;
 	while (i < philos)
 	{
-		if (pthread_join(philo[i].thread, NULL))
-			return (0);
+		pthread_join(philo[i].thread, NULL);
 		i++;
 	}
-	return (1);
 }
 
-int	destroy_mutexes(t_info *info)
+void	destroy_mutexes(t_info *info)
 {
 	int	i;
 	int	philos;
@@ -92,9 +88,10 @@ int	destroy_mutexes(t_info *info)
 	philos = info->philo_count;
 	while (i < philos)
 	{
-		if (pthread_mutex_destroy(&info->fork_locks[i]))
-			return (0);
+		pthread_mutex_destroy(&info->fork_locks[i]);
+		pthread_mutex_destroy(&info->philo[i].meal_time_lock);
 		i++;
 	}
-	return (1);
+	pthread_mutex_destroy(&info->print_lock);
+	pthread_mutex_destroy(&info->status_lock);
 }

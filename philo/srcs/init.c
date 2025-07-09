@@ -6,26 +6,42 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:42:45 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/04 18:48:24 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/09 01:26:05 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-static int	init_info(t_philo *philo, t_info *info, char **av)
+static void	init_philo_meal_time_lock(t_philo *philo);
+static void	init_info(t_philo *philo, t_info *info, char **av);
+static void	assign_info_to_philos(t_philo *philo, t_info *info);
+static void	init_philo(t_philo *philo);
+
+static void	init_philo_meal_time_lock(t_philo *philo)
+{
+	int	i;
+	int	philos;
+
+	i = 0;
+	philos = philo->info->philo_count;
+	while (i < philos)
+	{
+		pthread_mutex_init(&philo[i].meal_time_lock, NULL);
+		i++;
+	}
+}
+
+static void	init_info(t_philo *philo, t_info *info, char **av)
 {
 	init_args(info, av);
 	info->philo_died = 0;
 	info->meal_limit_reached = 0;
 	info->fork_init_flag = 0;
-	info->start_time = get_timestamp_ms();
 	init_forks(info);
-	if (!init_fork_mutexes(info))
-		return (0);
-	if (pthread_mutex_init(&info->print_lock, NULL))
-		return (0);
+	init_fork_mutexes(info);
+	pthread_mutex_init(&info->print_lock, NULL);
+	pthread_mutex_init(&info->status_lock, NULL);
 	info->philo = philo;
-	return (1);
 }
 
 static void	assign_info_to_philos(t_philo *philo, t_info *info)
@@ -44,16 +60,14 @@ static void	init_philo(t_philo *philo)
 {
 	init_id(philo);
 	init_meal_count(philo);
-	init_last_meal_time(philo);
 	init_philo_forks(philo);
 	init_philo_locks(philo);
+	init_philo_meal_time_lock(philo);
 }
 
-int	init(t_philo *philo, t_info *info, char **av)
+void	init(t_philo *philo, t_info *info, char **av)
 {
-	if (!init_info(philo, info, av))
-		return (0);
+	init_info(philo, info, av);
 	assign_info_to_philos(philo, info);
 	init_philo(philo);
-	return (1);
 }

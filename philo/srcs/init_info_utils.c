@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:22:48 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/03 14:04:33 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/09 00:35:01 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,14 @@ void	init_forks(t_info *info)
 	}
 }
 
-int	init_fork_mutexes(t_info *info)
+void	init_fork_mutexes(t_info *info)
 {
 	int	i;
 
 	i = 0;
 	while (i < info->philo_count)
 	{
-		if (pthread_mutex_init(&info->fork_locks[i], NULL))
-			return (0);
+		pthread_mutex_init(&info->fork_locks[i], NULL);
 		i++;
 	}
-	return (1);
 }
