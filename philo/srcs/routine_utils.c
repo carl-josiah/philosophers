@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:17:47 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/09 11:37:30 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/09 19:17:54 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ static void	which_to_pick(t_philo *philo)
 void	pick_up_forks(t_philo *philo)
 {
 	while (philo->id == *philo->left_fork || philo->id == *philo->right_fork)
-		usleep(1000);
+	{
+		if (responsive_usleep(1000, philo->info) == -1)
+			return ;
+	}
 	which_to_pick(philo);
 }
 
@@ -49,7 +52,8 @@ void	eat(t_philo *philo)
 	philo->last_meal_time = get_timestamp_ms();
 	printf("bro %d eating\n", philo->id);
 	pthread_mutex_unlock(&philo->meal_time_lock);
-	usleep(philo->info->eat_time * 1000);
+	if (responsive_usleep(philo->info->eat_time, philo->info) == -1)
+		return ;
 }
 
 void	drop_forks(t_philo *philo)

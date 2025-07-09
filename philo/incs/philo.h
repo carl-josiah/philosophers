@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:22:55 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/09 11:02:29 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/09 19:18:31 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,62 +63,66 @@ typedef struct s_info
 }						t_info;
 
 // parsing1.c
-int		is_empty_arg(int ac, char **av);
-int		is_all_digit(int ac, char **av);
-int		is_valid_num(int ac, char **av);
-int		is_over_max_philo(char **av);
+int					is_empty_arg(int ac, char **av);
+int					is_all_digit(int ac, char **av);
+int					is_valid_num(int ac, char **av);
+int					is_over_max_philo(char **av);
 
 // parsing2.c
-int		is_valid_argc(int ac);
-int		is_valid_argv(int ac, char **av);
-int		is_correct_input(int ac, char **av);
+int					is_valid_argc(int ac);
+int					is_valid_argv(int ac, char **av);
+int					is_correct_input(int ac, char **av);
 
 // utils1.c
-int		philo_atoi_safe(char *str, void *out);
+int					philo_atoi_safe(char *str, void *out);
 
 // utils2.c
-int		is_delim(char c);
-int		is_sign(char c);
-int		is_digit(char c);
+int					is_delim(char c);
+int					is_sign(char c);
+int					is_digit(char c);
 
 // error.c
-void	error_input(const char *msg);
-void	error_msg(const char *msg);
+void				error_input(const char *msg);
+void				error_msg(const char *msg);
 
 // timing.c
 unsigned long long	get_timestamp_ms(void);
+int					responsive_usleep(unsigned long long requested_time, t_info *info);
 
 // init_info_utils.c
-void	init_args(t_info *info, char **av);
-void	init_forks(t_info *info);
-void	init_fork_mutexes(t_info *info);
+void				init_args(t_info *info, char **av);
+void				init_forks(t_info *info);
+void				init_fork_mutexes(t_info *info);
 
 // init_philo_utils.c
-void	init_id(t_philo *philo);
-void	init_meal_count(t_philo *philo);
-void	init_last_meal_time(t_philo *philo);
-void	init_philo_forks(t_philo *philo);
-void	init_philo_locks(t_philo *philo);
+void				init_id(t_philo *philo);
+void				init_meal_count(t_philo *philo);
+void				init_last_meal_time(t_philo *philo);
+void				init_philo_forks(t_philo *philo);
+void				init_philo_locks(t_philo *philo);
 
 // init.c
-void	init(t_philo *philo, t_info *info, char **av);
+void				init(t_philo *philo, t_info *info, char **av);
 
 // simulation.c
-int		start_simulation(t_philo *philo, t_info *info);
+int					start_simulation(t_philo *philo, t_info *info);
 
 // simulation_utils.c
-void	init_eating_order(t_info *info);
-int		create_threads(t_philo *philo);
-void	create_mutexes(t_info *info);
-void	join_threads(t_philo *philo);
-void	destroy_mutexes(t_info *info);
+void				init_eating_order(t_info *info);
+int					create_threads(t_philo *philo);
+void				create_mutexes(t_info *info);
+void				join_threads(t_philo *philo);
+void				destroy_mutexes(t_info *info);
 
 // routine.c
-void	*routine(void *arg);
+void				*routine(void *arg);
 
 // routine_utils.c
-void	drop_forks(t_philo *philo);
-void	pick_up_forks(t_philo *philo);
-void	eat(t_philo *philo);
+void				drop_forks(t_philo *philo);
+void				pick_up_forks(t_philo *philo);
+void				eat(t_philo *philo);
+
+// monitor.c
+int					monitor(t_info *info);
 
 #endif

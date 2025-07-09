@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:15:20 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/09 11:32:58 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/09 19:17:20 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,15 @@ static void	philo_eating(t_philo *philo)
 static void	philo_thinking(t_philo *philo)
 {
 	printf("bro %d thinking\n", philo->id);
-	usleep(1000);
+	if (responsive_usleep(1000, philo->info) == -1)
+		return ;
 }
 
 static void	philo_sleeping(t_philo *philo)
 {
 	printf("bro %d sleeping\n", philo->id);
-	usleep(philo->info->sleep_time * 1000);
+	if (responsive_usleep(philo->info->sleep_time, philo->info) == -1)
+		return ;
 }
 
 static void	*single_philo_case(t_philo *philo)
