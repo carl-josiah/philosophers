@@ -6,6 +6,8 @@ Example:
 
 Do the reverse order for unlocking.
 
+(1. is already done.)
+
 2. Responsive Custom Sleep
 Never use plain usleep for eating/sleeping/thinking.
 Instead, use a custom sleep function that:

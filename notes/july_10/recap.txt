@@ -1,0 +1,17 @@
+1. what is philosophers all about?
+— the philosophers project is all about concurrent programming.
+— concurrent programming is a type of programming where there are several
+threads or processes running simultaneously.
+— processes are running programs in your computer and threads act as mini
+processes that run inside your processes. think of threads as a smaller version
+of the process.
+— the philosophers project is all about concurrently programming philosophers who eat,
+think, and sleep. the main goal is to avoid them from starving. they all sit in a circular
+table and in between each philosopher lies a fork. each philosopher only gets to eat when 
+they pick up two forks.
+
+2. what is the main problem?
+— the main problem is about dealing with coordination, synchronization, and timing issues that
+comes with concurrent programming. concurrency has a trade-off, an increase in performance, but has
+a higher potential to slow down, or halt progress.
+— technical explanation: philosophers are going to die due t
