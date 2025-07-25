@@ -1,43 +1,27 @@
-NAME		= philo
+NAME = philo
 
-CC			= cc
+FLAGS = -Wall -Wextra -Werror -pthread
 
-CFLAGS		= -Wall -Wextra -Werror -g3
+SRCS = $(addsuffix .c,	main \
+						utils \
+						parse \
+						init \
+						sim \
+						sim_utils \
+						)
 
-THREAD		= -pthread
-
-SRCS		= srcs/philo.c \
-			srcs/utils1.c \
-			srcs/parsing1.c \
-			srcs/parsing2.c \
-			srcs/utils2.c \
-			srcs/error.c \
-			srcs/timing.c \
-			srcs/init.c \
-			srcs/init_philo_utils.c \
-			srcs/init_info_utils.c \
-			srcs/simulation.c \
-			srcs/routine.c \
-			srcs/routine_utils.c \
-			srcs/simulation_utils.c \
-			srcs/monitor.c \
-
-OBJS		= $(SRCS:srcs/%.c=objs/%.o)
-
-OBJS_DIR	= mkdir -p objs
+OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(THREAD) $^ -o $@
+	cc $(FLAGS) $^ -o $@
 
-objs/%.o: srcs/%.c
-	$(OBJS_DIR)
-	$(CC) $(CFLAGS) $(THREAD) -c $< -o $@
+%.o: %.c
+	cc $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
-	rm -rf objs
 
 fclean: clean
 	rm -f $(NAME)

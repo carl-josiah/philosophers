@@ -1,1 +1,0 @@
-the dining philosophers solved computing's problem of using single core being slow by adding more cores (philosophers). it is a solution disguised as a problem to propose how to solve problems that arose from the solution such as deadlocks, starvation, resource efficiency, and fairness.
