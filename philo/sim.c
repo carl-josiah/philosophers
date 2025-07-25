@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:31:40 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/25 11:49:56 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/25 15:44:15 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	take_forks(t_philo *philo);
 static int	eating(t_philo *philo);
+static void	drop_forks(t_philo *philo);
 
 static int	take_forks(t_philo *philo)
 {
@@ -45,22 +46,23 @@ static int	eating(t_philo *philo)
 	return (1);
 }
 
-static void	single_philo_case(t_philo *philo)
+static void	drop_forks(t_philo *philo)
 {
-	while (!is_dead(philo))
+	if (philo->id % 2 == 0)
 	{
-		guard_state(philo->lock_right, LOCK);
-		*philo->right_fork = philo->id;
 		guard_state(philo->lock_right, UNLOCK);
-		if (print_action(philo, TAKE_FORK))
-			return ;
-		chunk_usleep(philo->info->time_to_die, philo);
+		guard_state(philo->lock_left, UNLOCK);
+	}
+	else
+	{
+		guard_state(philo->lock_left, UNLOCK);
+		guard_state(philo->lock_right, UNLOCK);
 	}
 }
 
 void	*routine(void *arg)
 {
-	t_philo				*philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)arg;
 	if (philo->info->philo_count == 1)
@@ -73,6 +75,7 @@ void	*routine(void *arg)
 				return (NULL);
 			if (!eating(philo))
 				return (NULL);
+			drop_forks(philo);
 			if (!print_action(philo, THINKING))
 				return (NULL);
 			if (!print_action(philo, SLEEPING))

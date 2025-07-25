@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:37:37 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/25 11:24:15 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/25 15:43:13 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 
 static void	init_info(int ac, char **av, t_philo *philo, t_info *info);
 static void	init_philo(t_philo *philo, t_info *info);
+
+void	init_philo_last_meal_time(t_philo *philo, t_info *info)
+{
+	unsigned long long	i;
+
+	i = 0;
+	while (i < info->philo_count)
+	{
+		philo[i].last_meal_time = info->start_time;
+		i++;
+	}
+}
 
 static void	init_info(int ac, char **av, t_philo *philo, t_info *info)
 {

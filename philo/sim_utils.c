@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 11:09:04 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/25 11:31:01 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/25 15:32:59 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,10 @@ int	odd_take_forks(t_philo *philo)
 	*philo->right_fork = philo->id;
 	if (!print_action(philo, TAKE_FORK))
 		return (guard_state(philo->lock_right, UNLOCK), 0);
-	guard_state(philo->lock_right, UNLOCK);
 	guard_state(philo->lock_left, LOCK);
 	*philo->left_fork = philo->id;
 	if (!print_action(philo, TAKE_FORK))
 		return (guard_state(philo->lock_left, UNLOCK), 0);
-	guard_state(philo->lock_left, UNLOCK);
 	return (1);
 }
 
@@ -89,11 +87,9 @@ int	even_take_forks(t_philo *philo)
 	*philo->left_fork = philo->id;
 	if (!print_action(philo, TAKE_FORK))
 		return (guard_state(philo->lock_left, UNLOCK), 0);
-	guard_state(philo->lock_left, UNLOCK);
 	guard_state(philo->lock_right, LOCK);
 	*philo->right_fork = philo->id;
 	if (!print_action(philo, TAKE_FORK))
 		return (guard_state(philo->lock_right, UNLOCK), 0);
-	guard_state(philo->lock_right, UNLOCK);
 	return (1);
 }

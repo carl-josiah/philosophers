@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:07:11 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/25 11:25:01 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/25 15:43:57 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,14 @@ void				guard_state(pthread_mutex_t *mutex_lock, int lock_action);
 int					ft_atol(const char *str, unsigned long long *num);
 unsigned long long	curr_time(void);
 void				chunk_usleep(unsigned long long ms, t_philo *philo);
-void				init_philo_last_meal_time(t_philo *philo, t_info *info);
+void				single_philo_case(t_philo *philo);
 int					print_action(t_philo *philo, int action);
 
 // parse.c
 int					parsing(int ac, char **av);
 
 // init.c
+void				init_philo_last_meal_time(t_philo *philo, t_info *info);
 void				init_fork_eating_order(t_philo *philo, t_info *info);
 void				initialize(int ac, char **av, t_philo *philo, t_info *info);
 

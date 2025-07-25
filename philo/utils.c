@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 19:11:04 by ccastro           #+#    #+#             */
-/*   Updated: 2025/07/25 11:25:20 by ccastro          ###   ########.fr       */
+/*   Updated: 2025/07/25 15:43:31 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,16 @@ void	chunk_usleep(unsigned long long ms, t_philo *philo)
 		usleep(100);
 }
 
-void	init_philo_last_meal_time(t_philo *philo, t_info *info)
+void	single_philo_case(t_philo *philo)
 {
-	unsigned long long	i;
-
-	i = 0;
-	while (i < info->philo_count)
+	while (!is_dead(philo))
 	{
-		philo[i].last_meal_time = info->start_time;
-		i++;
+		guard_state(philo->lock_right, LOCK);
+		*philo->right_fork = philo->id;
+		guard_state(philo->lock_right, UNLOCK);
+		if (print_action(philo, TAKE_FORK))
+			return ;
+		chunk_usleep(philo->info->time_to_die, philo);
 	}
 }
 
